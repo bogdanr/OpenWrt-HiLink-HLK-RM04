@@ -31,7 +31,7 @@ This is achieved using the following code snippet:
 
     mkdir openwrt
     cd openwrt
-    svn co svn://svn.openwrt.org/openwrt/trunk@38333 <--@38333 means force to check out Revision 38333
+    svn co svn://svn.openwrt.org/openwrt/trunk@39210 <--@39210 means force to check out Revision 39210
     git clone https://github.com/JiapengLi/OpenWrt-HiLink-HLK-RM04.git
     cd trunk
     patch -p0 <../OpenWrt-HiLink-HLK-RM04/openwrt-add-support-for-hilink-hlk-rm04.patch
@@ -52,7 +52,7 @@ In the configuration menu, you need to select the following options:
 
 Target System: Ralink RT288x/RT3xxx
 Subtarget: RT305x based boards
-Target Profile: HILINK HLK-RM04
+Target Profile: HiLink HLK-RM04
 
 If this is the first time you're loading OpenWRT on the HLK-RM04, please select:
 *Target Image: ramdisk*  
@@ -65,7 +65,11 @@ To use OpenWrt with LuCI Web UI, you can additionally select following options:
 
 After all the needed options are selected, exit the menu, save the configuration, and proceed to build:
 
-	make
+	`make`
+
+or if you have a multicore machine use -j to specify multiple simultaneous build jobs:
+
+	`make -j4`
 
 After compiling is done without any error, you'll find the image in `bin/ramips/` which is named `openwrt-ramips-rt305x-hlk-rm04-squashfs-sysupgrade.bin`. 
 
